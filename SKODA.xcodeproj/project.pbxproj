@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF47A10AF0C656C579543D40 /* Pods_SKODA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42B047308EA6FB4621FA67 /* Pods_SKODA.framework */; };
+		F63205A01F821ADD00730B6F /* SignAndLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632059F1F821ADD00730B6F /* SignAndLoginViewController.swift */; };
+		F63205B81F823DD600730B6F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63205B71F823DD600730B6F /* WebViewController.swift */; };
+		F63DB8D01F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8CF1F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift */; };
+		F63DB8D21F8CA921009CC7B0 /* WisdomRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8D11F8CA921009CC7B0 /* WisdomRoomViewController.swift */; };
+		F63DB8D41F8F4F97009CC7B0 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */; };
+		F68A3FA41F7CED8A00A1F9CD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA31F7CED8A00A1F9CD /* MainViewController.swift */; };
+		F68A3FA61F7CEDBF00A1F9CD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA51F7CEDBF00A1F9CD /* MenuViewController.swift */; };
+		F68A3FA81F7CEF1D00A1F9CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA71F7CEF1D00A1F9CD /* BaseViewController.swift */; };
+		F68A3FAA1F7CF51200A1F9CD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA91F7CF51200A1F9CD /* UIViewController.swift */; };
+		F68A3FAC1F7CF66200A1F9CD /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FAB1F7CF66200A1F9CD /* Public.swift */; };
+		F68A3FAE1F7CF71F00A1F9CD /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FAD1F7CF71F00A1F9CD /* NewsViewController.swift */; };
+		F68A3FB01F7CFC7D00A1F9CD /* TryAndLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FAF1F7CFC7D00A1F9CD /* TryAndLookViewController.swift */; };
+		F68A3FB21F7CFFCD00A1F9CD /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FB11F7CFFCD00A1F9CD /* OrderViewController.swift */; };
+		F68A3FB41F7D096500A1F9CD /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FB31F7D096500A1F9CD /* GlobalVar.swift */; };
+		F68A3FB61F7D0D6600A1F9CD /* AddAndBindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FB51F7D0D6600A1F9CD /* AddAndBindingViewController.swift */; };
+		F6D896DE1F7CDAF1004466B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D896DD1F7CDAF1004466B1 /* AppDelegate.swift */; };
+		F6D896E01F7CDAF1004466B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D896DF1F7CDAF1004466B1 /* ViewController.swift */; };
+		F6D896E31F7CDAF1004466B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D896E11F7CDAF1004466B1 /* Main.storyboard */; };
+		F6D896E51F7CDAF1004466B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6D896E41F7CDAF1004466B1 /* Assets.xcassets */; };
+		F6D896E81F7CDAF1004466B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6D896E61F7CDAF1004466B1 /* LaunchScreen.storyboard */; };
+		F6E70DA61F7E1EF500BD7A05 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E70DA51F7E1EF500BD7A05 /* OrderDetailViewController.swift */; };
+		F6E70DA81F7E25E500BD7A05 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E70DA71F7E25E500BD7A05 /* UIColor.swift */; };
+		F6E70DAA1F7E267800BD7A05 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E70DA91F7E267700BD7A05 /* String.swift */; };
+		F6EF4AAB1F7E549F002338F1 /* OrderFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF4AAA1F7E549F002338F1 /* OrderFinishViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		13AF7EC2084164CE328C26DB /* Pods-SKODA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKODA.release.xcconfig"; path = "Pods/Target Support Files/Pods-SKODA/Pods-SKODA.release.xcconfig"; sourceTree = "<group>"; };
+		336D5D6D7C24E8AC021E3C6F /* Pods-SKODA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKODA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKODA/Pods-SKODA.debug.xcconfig"; sourceTree = "<group>"; };
+		CE42B047308EA6FB4621FA67 /* Pods_SKODA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKODA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F632059F1F821ADD00730B6F /* SignAndLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignAndLoginViewController.swift; sourceTree = "<group>"; };
+		F63205B71F823DD600730B6F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		F63DB8CF1F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginTypeViewController.swift; sourceTree = "<group>"; };
+		F63DB8D11F8CA921009CC7B0 /* WisdomRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisdomRoomViewController.swift; sourceTree = "<group>"; };
+		F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		F68A3FA31F7CED8A00A1F9CD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F68A3FA51F7CEDBF00A1F9CD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		F68A3FA71F7CEF1D00A1F9CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F68A3FA91F7CF51200A1F9CD /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		F68A3FAB1F7CF66200A1F9CD /* Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
+		F68A3FAD1F7CF71F00A1F9CD /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		F68A3FAF1F7CFC7D00A1F9CD /* TryAndLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryAndLookViewController.swift; sourceTree = "<group>"; };
+		F68A3FB11F7CFFCD00A1F9CD /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		F68A3FB31F7D096500A1F9CD /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
+		F68A3FB51F7D0D6600A1F9CD /* AddAndBindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndBindingViewController.swift; sourceTree = "<group>"; };
+		F6D896DA1F7CDAF1004466B1 /* SKODA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKODA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6D896DD1F7CDAF1004466B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F6D896DF1F7CDAF1004466B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F6D896E21F7CDAF1004466B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F6D896E41F7CDAF1004466B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6D896E71F7CDAF1004466B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F6D896E91F7CDAF1004466B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6E70DA51F7E1EF500BD7A05 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		F6E70DA71F7E25E500BD7A05 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		F6E70DA91F7E267700BD7A05 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F6EF4AAA1F7E549F002338F1 /* OrderFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFinishViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6D896D71F7CDAF1004466B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF47A10AF0C656C579543D40 /* Pods_SKODA.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		29ED2A6C3B13828AB130887C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE42B047308EA6FB4621FA67 /* Pods_SKODA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDC04BAEB9DCCE0AAA8EE5F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				336D5D6D7C24E8AC021E3C6F /* Pods-SKODA.debug.xcconfig */,
+				13AF7EC2084164CE328C26DB /* Pods-SKODA.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F65EAC661F7CDF09009FCAA2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F68A3FA71F7CEF1D00A1F9CD /* BaseViewController.swift */,
+				F68A3FA31F7CED8A00A1F9CD /* MainViewController.swift */,
+				F68A3FA51F7CEDBF00A1F9CD /* MenuViewController.swift */,
+				F68A3FAD1F7CF71F00A1F9CD /* NewsViewController.swift */,
+				F68A3FAF1F7CFC7D00A1F9CD /* TryAndLookViewController.swift */,
+				F68A3FB11F7CFFCD00A1F9CD /* OrderViewController.swift */,
+				F68A3FB51F7D0D6600A1F9CD /* AddAndBindingViewController.swift */,
+				F6E70DA51F7E1EF500BD7A05 /* OrderDetailViewController.swift */,
+				F6EF4AAA1F7E549F002338F1 /* OrderFinishViewController.swift */,
+				F632059F1F821ADD00730B6F /* SignAndLoginViewController.swift */,
+				F63205B71F823DD600730B6F /* WebViewController.swift */,
+				F6D896DF1F7CDAF1004466B1 /* ViewController.swift */,
+				F63DB8CF1F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift */,
+				F63DB8D11F8CA921009CC7B0 /* WisdomRoomViewController.swift */,
+				F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F65EAC671F7CDF10009FCAA2 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				F68A3FB31F7D096500A1F9CD /* GlobalVar.swift */,
+				F68A3FAB1F7CF66200A1F9CD /* Public.swift */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		F65EAC681F7CDF20009FCAA2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F6E70DA91F7E267700BD7A05 /* String.swift */,
+				F6E70DA71F7E25E500BD7A05 /* UIColor.swift */,
+				F68A3FA91F7CF51200A1F9CD /* UIViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F6D896D11F7CDAF1004466B1 = {
+			isa = PBXGroup;
+			children = (
+				F6D896DC1F7CDAF1004466B1 /* SKODA */,
+				F6D896DB1F7CDAF1004466B1 /* Products */,
+				EDC04BAEB9DCCE0AAA8EE5F7 /* Pods */,
+				29ED2A6C3B13828AB130887C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F6D896DB1F7CDAF1004466B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6D896DA1F7CDAF1004466B1 /* SKODA.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6D896DC1F7CDAF1004466B1 /* SKODA */ = {
+			isa = PBXGroup;
+			children = (
+				F65EAC681F7CDF20009FCAA2 /* Extension */,
+				F65EAC671F7CDF10009FCAA2 /* Public */,
+				F65EAC661F7CDF09009FCAA2 /* Controller */,
+				F6D896DD1F7CDAF1004466B1 /* AppDelegate.swift */,
+				F6D896E11F7CDAF1004466B1 /* Main.storyboard */,
+				F6D896E41F7CDAF1004466B1 /* Assets.xcassets */,
+				F6D896E61F7CDAF1004466B1 /* LaunchScreen.storyboard */,
+				F6D896E91F7CDAF1004466B1 /* Info.plist */,
+			);
+			path = SKODA;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6D896D91F7CDAF1004466B1 /* SKODA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6D896EC1F7CDAF1004466B1 /* Build configuration list for PBXNativeTarget "SKODA" */;
+			buildPhases = (
+				F0FE5FAB13DAFE8C731039B9 /* [CP] Check Pods Manifest.lock */,
+				F6D896D61F7CDAF1004466B1 /* Sources */,
+				F6D896D71F7CDAF1004466B1 /* Frameworks */,
+				F6D896D81F7CDAF1004466B1 /* Resources */,
+				1E04193E964AA54BF3866CC9 /* [CP] Embed Pods Frameworks */,
+				63B57572EA9E14D5C64FB13D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKODA;
+			productName = SKODA;
+			productReference = F6D896DA1F7CDAF1004466B1 /* SKODA.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6D896D21F7CDAF1004466B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "孫 鈺驊";
+				TargetAttributes = {
+					F6D896D91F7CDAF1004466B1 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F6D896D51F7CDAF1004466B1 /* Build configuration list for PBXProject "SKODA" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F6D896D11F7CDAF1004466B1;
+			productRefGroup = F6D896DB1F7CDAF1004466B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6D896D91F7CDAF1004466B1 /* SKODA */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6D896D81F7CDAF1004466B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6D896E81F7CDAF1004466B1 /* LaunchScreen.storyboard in Resources */,
+				F6D896E51F7CDAF1004466B1 /* Assets.xcassets in Resources */,
+				F6D896E31F7CDAF1004466B1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E04193E964AA54BF3866CC9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SKODA/Pods-SKODA-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKODA/Pods-SKODA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63B57572EA9E14D5C64FB13D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SKODA/Pods-SKODA-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0FE5FAB13DAFE8C731039B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKODA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6D896D61F7CDAF1004466B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F68A3FB01F7CFC7D00A1F9CD /* TryAndLookViewController.swift in Sources */,
+				F63205B81F823DD600730B6F /* WebViewController.swift in Sources */,
+				F6E70DA81F7E25E500BD7A05 /* UIColor.swift in Sources */,
+				F68A3FB21F7CFFCD00A1F9CD /* OrderViewController.swift in Sources */,
+				F68A3FA81F7CEF1D00A1F9CD /* BaseViewController.swift in Sources */,
+				F68A3FA41F7CED8A00A1F9CD /* MainViewController.swift in Sources */,
+				F68A3FAA1F7CF51200A1F9CD /* UIViewController.swift in Sources */,
+				F6EF4AAB1F7E549F002338F1 /* OrderFinishViewController.swift in Sources */,
+				F63DB8D41F8F4F97009CC7B0 /* ContactViewController.swift in Sources */,
+				F68A3FB41F7D096500A1F9CD /* GlobalVar.swift in Sources */,
+				F6D896E01F7CDAF1004466B1 /* ViewController.swift in Sources */,
+				F68A3FAC1F7CF66200A1F9CD /* Public.swift in Sources */,
+				F6D896DE1F7CDAF1004466B1 /* AppDelegate.swift in Sources */,
+				F63DB8D21F8CA921009CC7B0 /* WisdomRoomViewController.swift in Sources */,
+				F63DB8D01F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift in Sources */,
+				F6E70DA61F7E1EF500BD7A05 /* OrderDetailViewController.swift in Sources */,
+				F68A3FA61F7CEDBF00A1F9CD /* MenuViewController.swift in Sources */,
+				F6E70DAA1F7E267800BD7A05 /* String.swift in Sources */,
+				F68A3FB61F7D0D6600A1F9CD /* AddAndBindingViewController.swift in Sources */,
+				F63205A01F821ADD00730B6F /* SignAndLoginViewController.swift in Sources */,
+				F68A3FAE1F7CF71F00A1F9CD /* NewsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F6D896E11F7CDAF1004466B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6D896E21F7CDAF1004466B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F6D896E61F7CDAF1004466B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6D896E71F7CDAF1004466B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F6D896EA1F7CDAF1004466B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F6D896EB1F7CDAF1004466B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6D896ED1F7CDAF1004466B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 336D5D6D7C24E8AC021E3C6F /* Pods-SKODA.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FX563598SP;
+				INFOPLIST_FILE = SKODA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ushareapp.SKODA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F6D896EE1F7CDAF1004466B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13AF7EC2084164CE328C26DB /* Pods-SKODA.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FX563598SP;
+				INFOPLIST_FILE = SKODA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ushareapp.SKODA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6D896D51F7CDAF1004466B1 /* Build configuration list for PBXProject "SKODA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6D896EA1F7CDAF1004466B1 /* Debug */,
+				F6D896EB1F7CDAF1004466B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6D896EC1F7CDAF1004466B1 /* Build configuration list for PBXNativeTarget "SKODA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6D896ED1F7CDAF1004466B1 /* Debug */,
+				F6D896EE1F7CDAF1004466B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6D896D21F7CDAF1004466B1 /* Project object */;
+}
