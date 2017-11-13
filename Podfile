@@ -9,7 +9,8 @@ target 'SKODA' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SwiftyJSON'
-  pod 'Firebase/Core'
+  pod 'FirebaseCore'
+  pod 'FirebaseMessaging'
 
   # Pods for Facebook
   pod 'Bolts'

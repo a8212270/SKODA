@@ -7,12 +7,36 @@
 //
 
 import UIKit
+import UserNotifications
 import FBSDKCoreKit
+import FirebaseCore
+import FirebaseInstanceID
+import FirebaseMessaging
+import SwiftyJSON
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    var content:JSON!
+    
+    func registerDevice(deviceToken: String) {
+        let parameters = [
+            "id": GlobalVar.user_id,
+            "token": "\(deviceToken)"]
+        
+        print(parameters)
+        Public.getRemoteData("\(GlobalVar.serverIp)api/v1/updateToken", parameters: parameters as [String : AnyObject]) { (response, error) in
+            if error {
+                let errorMsg = response["Msg"].string
+                print(errorMsg!)
+            } else {
+                print(response)
+            }
+            
+        }
+        
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -28,6 +52,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             GlobalVar.user_id = "0"
         }
         
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        // Push通知
+        if #available(iOS 10, *) {
+            
+            //Notifications get posted to the function (delegate):  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void)"
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                
+                guard error == nil else {
+                    //Display Error.. Handle Error.. etc..
+                    return
+                }
+                
+                if granted {
+                    //Do stuff here..
+                }
+                else {
+                    //Handle user denying permissions..
+                }
+            }
+            
+        } else {
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+            
+        }
+        application.registerForRemoteNotifications()
+        FirebaseApp.configure()
+        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(true)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.tokenRefreshNotification(notification:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+        
         return true
     }
     
@@ -35,6 +90,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         
         return handled
+    }
+    
+    @objc func tokenRefreshNotification(notification: NSNotification) {
+        if let refreshedToken = InstanceID.instanceID().token() {
+            print("InstanceID token: \(refreshedToken)")
+            if GlobalVar.user_id != "0" {
+                registerDevice(deviceToken: refreshedToken)
+            }
+        }
+    }
+    
+    // Device Token取得
+    func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data ) {
+        if let refreshedToken = InstanceID.instanceID().token() {
+            print("google token: \(refreshedToken)")
+            if GlobalVar.user_id != "0" {
+                registerDevice(deviceToken: refreshedToken)
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

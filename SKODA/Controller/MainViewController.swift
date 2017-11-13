@@ -24,7 +24,7 @@ class MainViewController: BaseViewController {
         addSlideMenuButton()
         clearBackTitle()
         
-        self.navigationItem.title = "金三元專業服務"
+        self.navigationItem.title = "金元三專業服務"
         self.navigationItem.hidesBackButton = true
         
         if GlobalVar.mode == "skoda" {

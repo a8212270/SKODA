@@ -342,6 +342,10 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
 }
 
 extension OrderDetailViewController: UITextViewDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {

@@ -13,6 +13,7 @@
 		F63DB8D01F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8CF1F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift */; };
 		F63DB8D21F8CA921009CC7B0 /* WisdomRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8D11F8CA921009CC7B0 /* WisdomRoomViewController.swift */; };
 		F63DB8D41F8F4F97009CC7B0 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */; };
+		F64885E51FB9B0FD00686341 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64885E41FB9B0FD00686341 /* GoogleService-Info.plist */; };
 		F68A3FA41F7CED8A00A1F9CD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA31F7CED8A00A1F9CD /* MainViewController.swift */; };
 		F68A3FA61F7CEDBF00A1F9CD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA51F7CEDBF00A1F9CD /* MenuViewController.swift */; };
 		F68A3FA81F7CEF1D00A1F9CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA71F7CEF1D00A1F9CD /* BaseViewController.swift */; };
@@ -43,6 +44,8 @@
 		F63DB8CF1F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginTypeViewController.swift; sourceTree = "<group>"; };
 		F63DB8D11F8CA921009CC7B0 /* WisdomRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisdomRoomViewController.swift; sourceTree = "<group>"; };
 		F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		F64885E31FB9AEE400686341 /* SKODA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SKODA.entitlements; sourceTree = "<group>"; };
+		F64885E41FB9B0FD00686341 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F68A3FA31F7CED8A00A1F9CD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F68A3FA51F7CEDBF00A1F9CD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F68A3FA71F7CEF1D00A1F9CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 		F6D896DC1F7CDAF1004466B1 /* SKODA */ = {
 			isa = PBXGroup;
 			children = (
+				F64885E41FB9B0FD00686341 /* GoogleService-Info.plist */,
+				F64885E31FB9AEE400686341 /* SKODA.entitlements */,
 				F65EAC681F7CDF20009FCAA2 /* Extension */,
 				F65EAC671F7CDF10009FCAA2 /* Public */,
 				F65EAC661F7CDF09009FCAA2 /* Controller */,
@@ -205,6 +210,14 @@
 					F6D896D91F7CDAF1004466B1 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -232,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6D896E81F7CDAF1004466B1 /* LaunchScreen.storyboard in Resources */,
+				F64885E51FB9B0FD00686341 /* GoogleService-Info.plist in Resources */,
 				F6D896E51F7CDAF1004466B1 /* Assets.xcassets in Resources */,
 				F6D896E31F7CDAF1004466B1 /* Main.storyboard in Resources */,
 			);
@@ -253,6 +267,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -264,6 +279,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -470,6 +486,7 @@
 			baseConfigurationReference = 336D5D6D7C24E8AC021E3C6F /* Pods-SKODA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SKODA/SKODA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FX563598SP;
 				INFOPLIST_FILE = SKODA/Info.plist;
@@ -487,6 +504,7 @@
 			baseConfigurationReference = 13AF7EC2084164CE328C26DB /* Pods-SKODA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SKODA/SKODA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FX563598SP;
 				INFOPLIST_FILE = SKODA/Info.plist;

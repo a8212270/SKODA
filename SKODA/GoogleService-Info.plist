@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>296461173132-ldff79qbr3a2j8lfav3q3dnjhcjvl09k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.296461173132-ldff79qbr3a2j8lfav3q3dnjhcjvl09k</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBFV5TciJj-L9YUsryCDNZQXIFac_FNBmI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>296461173132</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ushareapp.SKODA</string>
+	<key>PROJECT_ID</key>
+	<string>ysvwskoda-d721f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ysvwskoda-d721f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:296461173132:ios:dd884ab63520c2b2</string>
+	<key>DATABASE_URL</key>
+	<string>https://ysvwskoda-d721f.firebaseio.com</string>
+</dict>
+</plist>
