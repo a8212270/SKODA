@@ -38,7 +38,7 @@ class OrderDetailViewController: BaseViewController {
     let vw_maintenances = ["請選擇車廠", "VW LCV 土城服務廠"]
     let maintenances_phone = ["02-82213399", "02-89932272", "02-82213115", "02-22696290"]
     let maintenances_address = ["新北市中和區建康路28號", "新北市新莊區中正路66號", "新北市中和區建康路28號", "新北市土城區中華路二段212號"]
-    let times = ["請選擇保養時間", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30"]
+    let times = ["請選擇保養時間", "8:30", "9:30", "10:30", "11:30", "13:30", "14:30", "15:30"]
     
     //tableView 資料
     var date = ""
@@ -89,6 +89,7 @@ class OrderDetailViewController: BaseViewController {
         
         //設定datePickerView模式及偵聽
         datePickerView.tag = 99
+        datePickerView.minimumDate = NSDate() as Date
         datePickerView.datePickerMode = .date
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
     }
@@ -139,18 +140,23 @@ class OrderDetailViewController: BaseViewController {
             if error {
                 Public.displayAlert(self, title: "提醒！", message: response["Msg"].stringValue)
             } else {
-                let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
-                
-                popOverVC.carImgUrl = self.carImgUrl
-                popOverVC.car_Model = self.car_model
-                popOverVC.plate_Number = self.plate_number
-                popOverVC.time_t = response["result"]["time"].stringValue
-                popOverVC.orderTime_t = "\(self.date) \(self.time)"
-                popOverVC.place_t = self.maintenance
-                popOverVC.place_address_t = self.maintenances_address[Int(self.s_maintenance)!]
-                popOverVC.place_tel_t = self.maintenances_phone[Int(self.s_maintenance)!]
-                
-                self.navigationController?.pushViewController(popOverVC, animated: true)
+                let alert = UIAlertController(title: "提醒", message: "預約成功", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction((UIAlertAction(title: "確認", style: .default, handler: {(action) -> Void in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })))
+                self.present(alert, animated: true, completion: nil)
+//                let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
+//
+//                popOverVC.carImgUrl = self.carImgUrl
+//                popOverVC.car_Model = self.car_model
+//                popOverVC.plate_Number = self.plate_number
+//                popOverVC.time_t = response["result"]["time"].stringValue
+//                popOverVC.orderTime_t = "\(self.date) \(self.time)"
+//                popOverVC.place_t = self.maintenance
+//                popOverVC.place_address_t = self.maintenances_address[Int(self.s_maintenance)!]
+//                popOverVC.place_tel_t = self.maintenances_phone[Int(self.s_maintenance)!]
+//
+//                self.navigationController?.pushViewController(popOverVC, animated: true)
             }
         }
     }

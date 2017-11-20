@@ -199,8 +199,12 @@ class AddAndBindingViewController: BaseViewController {
         print(parameters)
         
         Public.getRemoteData("\(GlobalVar.serverIp)\(defaultApi)", parameters: parameters as [String : AnyObject]) { (response, error) in
-            Public.displayAlert(self, title: "提醒", message: response["Msg"].stringValue)
-            return
+
+            let alert = UIAlertController(title: "提醒", message: response["Msg"].stringValue, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction((UIAlertAction(title: "確認", style: .default, handler: {(action) -> Void in
+                self.navigationController?.popToRootViewController(animated: true)
+            })))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

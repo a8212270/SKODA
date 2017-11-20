@@ -14,6 +14,9 @@
 		F63DB8D21F8CA921009CC7B0 /* WisdomRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8D11F8CA921009CC7B0 /* WisdomRoomViewController.swift */; };
 		F63DB8D41F8F4F97009CC7B0 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */; };
 		F64885E51FB9B0FD00686341 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64885E41FB9B0FD00686341 /* GoogleService-Info.plist */; };
+		F64885E81FBAE53000686341 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64885E61FBAE50100686341 /* CoreBluetooth.framework */; };
+		F64885E91FBAE53800686341 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64885E71FBAE50A00686341 /* CoreLocation.framework */; };
+		F64885EB1FBAEA5900686341 /* WisdomRoomShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64885EA1FBAEA5900686341 /* WisdomRoomShowViewController.swift */; };
 		F68A3FA41F7CED8A00A1F9CD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA31F7CED8A00A1F9CD /* MainViewController.swift */; };
 		F68A3FA61F7CEDBF00A1F9CD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA51F7CEDBF00A1F9CD /* MenuViewController.swift */; };
 		F68A3FA81F7CEF1D00A1F9CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68A3FA71F7CEF1D00A1F9CD /* BaseViewController.swift */; };
@@ -46,6 +49,9 @@
 		F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		F64885E31FB9AEE400686341 /* SKODA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SKODA.entitlements; sourceTree = "<group>"; };
 		F64885E41FB9B0FD00686341 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F64885E61FBAE50100686341 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		F64885E71FBAE50A00686341 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F64885EA1FBAEA5900686341 /* WisdomRoomShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisdomRoomShowViewController.swift; sourceTree = "<group>"; };
 		F68A3FA31F7CED8A00A1F9CD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F68A3FA51F7CEDBF00A1F9CD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F68A3FA71F7CEF1D00A1F9CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64885E91FBAE53800686341 /* CoreLocation.framework in Frameworks */,
+				F64885E81FBAE53000686341 /* CoreBluetooth.framework in Frameworks */,
 				AF47A10AF0C656C579543D40 /* Pods_SKODA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +92,8 @@
 		29ED2A6C3B13828AB130887C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F64885E71FBAE50A00686341 /* CoreLocation.framework */,
+				F64885E61FBAE50100686341 /* CoreBluetooth.framework */,
 				CE42B047308EA6FB4621FA67 /* Pods_SKODA.framework */,
 			);
 			name = Frameworks;
@@ -116,6 +126,7 @@
 				F63DB8CF1F8CA5A0009CC7B0 /* ChooseLoginTypeViewController.swift */,
 				F63DB8D11F8CA921009CC7B0 /* WisdomRoomViewController.swift */,
 				F63DB8D31F8F4F97009CC7B0 /* ContactViewController.swift */,
+				F64885EA1FBAEA5900686341 /* WisdomRoomShowViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,6 +358,7 @@
 				F68A3FA61F7CEDBF00A1F9CD /* MenuViewController.swift in Sources */,
 				F6E70DAA1F7E267800BD7A05 /* String.swift in Sources */,
 				F68A3FB61F7D0D6600A1F9CD /* AddAndBindingViewController.swift in Sources */,
+				F64885EB1FBAEA5900686341 /* WisdomRoomShowViewController.swift in Sources */,
 				F63205A01F821ADD00730B6F /* SignAndLoginViewController.swift in Sources */,
 				F68A3FAE1F7CF71F00A1F9CD /* NewsViewController.swift in Sources */,
 			);

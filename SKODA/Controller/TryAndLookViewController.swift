@@ -11,6 +11,8 @@ import SwiftyJSON
 
 class TryAndLookViewControllerCell: UITableViewCell {
     @IBOutlet weak var input: UITextField!
+    @IBOutlet weak var submit: UIButton!
+    @IBOutlet weak var cancel: UIButton!
 }
 
 class TryAndLookViewController: BaseViewController {
@@ -20,17 +22,33 @@ class TryAndLookViewController: BaseViewController {
     var pickerViewList = [String]()
     var toolBar:UIToolbar!
     var carList:JSON = []
-    var allCar = [String]()
+    var allCar = ["請選擇車款"]
     
     let placeholders = ["目前車款", "車齡", "性別", "姓名", "電話", "請選擇試駕車款", "請選擇展示地點", "方便聯繫時間"]
-    let sk_maintenances = ["請選擇展示地點", "SKODA 中和新車銷售據點", "SKODA 新莊新車銷售據點", "SKODA 中和服務廠"]
+    let sk_maintenances = ["請選擇展示地點", "SKODA 中和新車銷售據點", "SKODA 新莊新車銷售據點"]
+    let d_sk_maintenances = ["", "1", "2"]
     let vw_maintenances = ["請選擇展示地點", "VW LCV 土城服務廠"]
-    let times = ["請選擇聯繫時間", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30"]
+    let d_vw_maintenances = ["", "4"]
+    let times = ["請選擇聯繫時間", "8:30", "9:30", "10:30", "11:30", "13:30", "14:30", "15:30"]
+    let d_times = ["", "1", "2", "3", "4", "5", "6", "7"]
+    let genders = ["請選擇性別", "男", "女"]
+    let d_genders = ["0", "1", "2"]
     
     //顯示資料
     var time = ""
     var maintenance = ""
     var testCar = ""
+    var gender = ""
+    
+    //傳送資料
+    var d_time = ""
+    var d_age = ""
+    var d_model_id = ""
+    var d_maintenance_plant_no = ""
+    var d_nowdrive = ""
+    var d_name = ""
+    var d_tel = ""
+    var d_gender = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +92,7 @@ class TryAndLookViewController: BaseViewController {
     
     func getTestCarList() {
         
-        let brand = GlobalVar.mode == "skoda" ? "1" : "2"
+        let brand = GlobalVar.mode == "skoda" ? "2" : "1"
         
         let parameters = ["brand": brand]
         
@@ -87,6 +105,46 @@ class TryAndLookViewController: BaseViewController {
                 for i in 0..<self.carList.count {
                     self.allCar.append(self.carList[i]["model"].stringValue)
                 }
+            }
+        }
+    }
+    
+    @objc func submitTestCarData() {
+        
+        guard Public.checkParameters(self, data: [d_nowdrive, d_age, d_model_id, d_maintenance_plant_no, d_time], Explanation: ["目前車款", "車齡", "試駕車款", "地點", "時間"]) else { return }
+    
+        let d_type = GlobalVar.user_id == "0" ? "0" : "1"
+        
+        var parameters = [
+            "type": d_type,
+            "nowdrive": d_nowdrive,
+            "age": d_age,
+            "model_id": d_model_id,
+            "maintenance_plant_no": d_maintenance_plant_no,
+            "time": d_time]
+        
+        if GlobalVar.user_id == "0" {
+
+            guard Public.checkParameters(self, data: [d_name, d_tel, d_gender], Explanation: ["姓名", "電話", "性別"]) else { return }
+            
+            parameters.updateValue(d_name, forKey: "name")
+            parameters.updateValue(d_tel, forKey: "tel")
+            parameters.updateValue(d_gender, forKey: "gender")
+
+        }
+        
+        print(parameters)
+        
+        Public.getRemoteData("\(GlobalVar.serverIp)api/v1/testdrive/Add", parameters: parameters as [String : AnyObject]) { (response, error) in
+            print(response)
+            if error {
+
+            } else {
+                let alert = UIAlertController(title: "提醒", message: "預約成功", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction((UIAlertAction(title: "確認", style: .default, handler: {(action) -> Void in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -113,6 +171,8 @@ extension TryAndLookViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == placeholders.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! TryAndLookViewControllerCell
+            
+            cell.submit.addTarget(self, action: #selector(self.submitTestCarData), for: .touchUpInside)
             cell.backgroundColor = UIColor.clear
             return cell
         } else {
@@ -121,14 +181,18 @@ extension TryAndLookViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.input.placeholder = placeholders[indexPath.row]
             
-            if indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7 {
+            if indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7 || indexPath.row == 2 {
                 let pickerView = UIPickerView()
                 pickerView.delegate = self
                 pickerView.tag = indexPath.row
                 cell.input.inputView = pickerView
                 cell.input.inputAccessoryView = toolBar
+                
+                if indexPath.row == 2 && (gender != "" || gender != "請選擇性別") {
+                    cell.input.text = gender
+                }
 
-                if indexPath.row == 5 && (maintenance != "" || maintenance != "請選擇試駕車款") {
+                if indexPath.row == 5 && (testCar != "" || testCar != "請選擇試駕車款") {
                     cell.input.text = testCar
                 }
                 
@@ -173,6 +237,8 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         switch pickerView.tag {
+        case 2:
+            pickerViewList = genders
         case 5:
             pickerViewList = allCar
         case 6:
@@ -193,6 +259,8 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         switch pickerView.tag {
+        case 2:
+            pickerViewList = genders
         case 5:
             pickerViewList = allCar
         case 6:
@@ -212,12 +280,22 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
+        case 2:
+            gender = pickerViewList[row]
+            d_gender = d_genders[row]
         case 5:
             testCar = pickerViewList[row]
+            d_model_id = carList[row - 1]["id"].stringValue
         case 6:
             maintenance = pickerViewList[row]
+            if GlobalVar.mode == "skoda" {
+                d_maintenance_plant_no = d_sk_maintenances[row]
+            } else {
+                d_maintenance_plant_no = d_vw_maintenances[row]
+            }
         case 7:
             time = pickerViewList[row]
+            d_time = d_times[row]
         default:
             break
         }
@@ -246,25 +324,19 @@ extension TryAndLookViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         print(textField.text!)
-//        switch(textField.tag) {
-//        case 0:
-//            plate_number = textField.text!
-//        case 2:
-//            car_owner = textField.text!
-//        case 3:
-//            VIN = textField.text!
-//        case 5:
-//            other_car = textField.text!
-//        case 6:
-//            authday = textField.text!
-//        case 7:
-//            user_name = textField.text!
-//        case 8:
-//            user_tel = textField.text!
-//        case 9:
-//            user_address = textField.text!
-//        default:
-//            print("none")
-//        }
+        switch(textField.tag) {
+        case 0:
+            d_nowdrive = textField.text!
+        case 1:
+            d_age = textField.text!
+        case 2:
+            d_gender = textField.text!
+        case 3:
+            d_name = textField.text!
+        case 4:
+            d_tel = textField.text!
+        default:
+            print("none")
+        }
     }
 }

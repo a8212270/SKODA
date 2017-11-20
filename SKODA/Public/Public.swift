@@ -79,6 +79,22 @@ class Public {
         }
     }
     
+    class func checkParameters(_ targetVC: UIViewController, data: [String], Explanation: [String]) -> Bool {
+        var errorTsxt = ""
+        for i in 0..<data.count {
+            if data[i] == "" {
+                errorTsxt += "\(Explanation[i]) "
+            }
+        }
+        
+        if errorTsxt != "" {
+            Public.displayAlert(targetVC, title: "提醒！", message: "缺少以下內容：\n \(errorTsxt)")
+            return false
+        } else {
+            return true
+        }
+    }
+    
 }
 
 extension JSON{

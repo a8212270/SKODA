@@ -48,7 +48,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             let hasSetId = defaults.value(forKey: "id") as? String
             if hasSetId != nil {
                 defaults.removeObject(forKey: "id")
-                GlobalVar.user_id = ""
+                GlobalVar.user_id = "0"
                 
                 Public.displayAlert(self, title: "提醒", message: "登出成功")
 //                arrayMenuOptions.append(["title":"登出", "icon":"spot"])
