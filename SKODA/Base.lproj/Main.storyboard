@@ -621,10 +621,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testDrive" translatesAutoresizingMaskIntoConstraints="NO" id="Neq-Gb-Vja">
-                                <rect key="frame" x="0.0" y="64" width="375" height="253.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="233.5"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f0K-Zu-lHx">
-                                <rect key="frame" x="16" y="325" width="343" height="322"/>
+                                <rect key="frame" x="16" y="305" width="343" height="342"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="xBw-2G-dXq" customClass="TryAndLookViewControllerCell" customModule="SKODA" customModuleProvider="target">
@@ -698,7 +698,7 @@
                             <constraint firstItem="f0K-Zu-lHx" firstAttribute="top" secondItem="Neq-Gb-Vja" secondAttribute="bottom" constant="7.5" id="Hag-Pc-UFz"/>
                             <constraint firstItem="yKq-EN-oV0" firstAttribute="bottom" secondItem="f0K-Zu-lHx" secondAttribute="bottom" constant="20" id="YfT-XJ-hIr"/>
                             <constraint firstItem="Neq-Gb-Vja" firstAttribute="leading" secondItem="yKq-EN-oV0" secondAttribute="leading" id="cPj-CU-oxM"/>
-                            <constraint firstItem="Neq-Gb-Vja" firstAttribute="height" secondItem="aZ5-dc-jGu" secondAttribute="height" multiplier="0.38" id="dpf-eg-HkF"/>
+                            <constraint firstItem="Neq-Gb-Vja" firstAttribute="height" secondItem="aZ5-dc-jGu" secondAttribute="height" multiplier="0.35" id="dpf-eg-HkF"/>
                             <constraint firstItem="Neq-Gb-Vja" firstAttribute="trailing" secondItem="yKq-EN-oV0" secondAttribute="trailing" id="ejU-Zc-rbV"/>
                             <constraint firstItem="Neq-Gb-Vja" firstAttribute="width" secondItem="aZ5-dc-jGu" secondAttribute="width" id="loI-1T-ef4"/>
                         </constraints>
@@ -706,6 +706,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="f0K-Zu-lHx" id="Xz3-7v-ouA"/>
+                        <outlet property="titleImg" destination="Neq-Gb-Vja" id="mxo-fd-s9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="658-gd-FqV" userLabel="First Responder" sceneMemberID="firstResponder"/>

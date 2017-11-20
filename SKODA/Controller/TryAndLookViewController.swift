@@ -18,6 +18,7 @@ class TryAndLookViewControllerCell: UITableViewCell {
 class TryAndLookViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleImg: UIImageView!
     
     var pickerViewList = [String]()
     var toolBar:UIToolbar!
@@ -74,6 +75,12 @@ class TryAndLookViewController: BaseViewController {
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         toolBar.setItems([flexSpace, flexSpace, flexSpace, flexSpace, doneButton], animated: true)
         getTestCarList()
+        
+        if GlobalVar.mode == "skoda" {
+            titleImg.image = UIImage(named: "testDrive")
+        } else {
+            titleImg.image = UIImage(named: "testDrive_vw")
+        }
     }
 
     override func didReceiveMemoryWarning() {

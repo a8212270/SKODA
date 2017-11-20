@@ -132,18 +132,25 @@ class AddAndBindingViewController: BaseViewController {
     @objc func sendData() {
         view.endEditing(true)
         
-        if plate_number == "" {
-            Public.displayAlert(self, title: "提醒！", message: "請輸入車牌號碼")
+        let data_1 = [plate_number, date, car_owner]
+        let explanation_1 = ["車牌號碼", "出廠年月(日期可無視)", "牌照登記人"]
+        
+        guard Public.checkParameters(self, data: data_1, Explanation: explanation_1) else {
             return
         }
-        if date == "" {
-            Public.displayAlert(self, title: "提醒！", message: "請選擇出廠年月(日期可無視)")
-            return
-        }
-        if car_owner == "" {
-            Public.displayAlert(self, title: "提醒！", message: "請輸入牌照登記人")
-            return
-        }
+        
+//        if plate_number == "" {
+//            Public.displayAlert(self, title: "提醒！", message: "請輸入車牌號碼")
+//            return
+//        }
+//        if date == "" {
+//            Public.displayAlert(self, title: "提醒！", message: "請選擇出廠年月(日期可無視)")
+//            return
+//        }
+//        if car_owner == "" {
+//            Public.displayAlert(self, title: "提醒！", message: "請輸入牌照登記人")
+//            return
+//        }
         
         var parameters = [
             "user_id": GlobalVar.user_id,
@@ -152,12 +159,14 @@ class AddAndBindingViewController: BaseViewController {
             "car_owner": car_owner]
         
         if defaultApi == "api/v1/car/Add/Record" {
-            if VIN == "" {
-                Public.displayAlert(self, title: "提醒！", message: "請輸入車身號碼")
+            
+            let data_2 = [VIN, authday, user_name, user_tel, user_address]
+            let explanation_2 = ["車身號碼", "領牌日", "車輛使用人", "車輛使用人電話", "車輛使用人地址"]
+            
+            guard Public.checkParameters(self, data: data_2, Explanation: explanation_2) else {
                 return
-            } else {
-                parameters.updateValue(VIN, forKey: "VIN")
             }
+            
             if model_no == "" ||  model_no == "請選擇車款"{
                 Public.displayAlert(self, title: "提醒！", message: "請選擇車款")
                 return
@@ -170,41 +179,30 @@ class AddAndBindingViewController: BaseViewController {
             } else {
                 parameters.updateValue(other_car, forKey: "other_car")
             }
-            if authday == "" {
-                Public.displayAlert(self, title: "提醒！", message: "請選擇領牌日")
-                return
-            } else {
-                parameters.updateValue(authday, forKey: "authday")
-            }
-            if user_name == "" {
-                Public.displayAlert(self, title: "提醒！", message: "請輸入車輛使用人")
-                return
-            } else {
-                parameters.updateValue(user_name, forKey: "user_name")
-            }
-            if user_tel == "" {
-                Public.displayAlert(self, title: "提醒！", message: "請輸入車輛使用人電話")
-                return
-            } else {
-                parameters.updateValue(user_tel, forKey: "user_tel")
-            }
-            if user_address == "" {
-                Public.displayAlert(self, title: "提醒！", message: "請輸入車輛使用人地址")
-                return
-            } else {
-                parameters.updateValue(user_address, forKey: "user_address")
-            }
+            
+            parameters.updateValue(VIN, forKey: "VIN")
+            parameters.updateValue(authday, forKey: "authday")
+            parameters.updateValue(user_name, forKey: "user_name")
+            parameters.updateValue(user_tel, forKey: "user_tel")
+            parameters.updateValue(user_address, forKey: "user_address")
+            
+            
         }
         
         print(parameters)
         
         Public.getRemoteData("\(GlobalVar.serverIp)\(defaultApi)", parameters: parameters as [String : AnyObject]) { (response, error) in
 
-            let alert = UIAlertController(title: "提醒", message: response["Msg"].stringValue, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction((UIAlertAction(title: "確認", style: .default, handler: {(action) -> Void in
-                self.navigationController?.popToRootViewController(animated: true)
-            })))
-            self.present(alert, animated: true, completion: nil)
+            if error {
+                Public.displayAlert(self, title: "提醒", message: response["Msg"].stringValue)
+            } else {
+                let alert = UIAlertController(title: "提醒", message: response["Msg"].stringValue, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction((UIAlertAction(title: "確認", style: .default, handler: {(action) -> Void in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         }
     }
     
