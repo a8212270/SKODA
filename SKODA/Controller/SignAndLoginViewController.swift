@@ -119,8 +119,24 @@ class SignAndLoginViewController: UIViewController {
                 let defaults = UserDefaults.standard
                 defaults.setValue(response["result"]["user_id"].stringValue, forKey: "id")
                 defaults.setValue(response["result"]["username"].stringValue, forKey: "name")
-                
+                self.registerDevice()
                 self.performSegue(withIdentifier: "mainView", sender: self)
+            }
+        }
+    }
+    
+    func registerDevice() {
+        let parameters = [
+            "id": GlobalVar.user_id,
+            "token": GlobalVar.deviceToken]
+        
+        print(parameters)
+        Public.getRemoteData("\(GlobalVar.serverIp)api/v1/updateToken", parameters: parameters as [String : AnyObject]) { (response, error) in
+            if error {
+                let errorMsg = response["Msg"].string
+                print(errorMsg!)
+            } else {
+                print(response)
             }
         }
     }

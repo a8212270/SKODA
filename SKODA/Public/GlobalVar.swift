@@ -16,4 +16,5 @@ struct GlobalVar {
     
     static var mode = "skoda"
     static var user_id = "0"
+    static var deviceToken = ""
 }

@@ -15,7 +15,7 @@ import FirebaseMessaging
 import SwiftyJSON
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var content:JSON!
@@ -93,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     @objc func tokenRefreshNotification(notification: NSNotification) {
         if let refreshedToken = InstanceID.instanceID().token() {
             print("InstanceID token: \(refreshedToken)")
+            GlobalVar.deviceToken = refreshedToken
             if GlobalVar.user_id != "0" {
                 registerDevice(deviceToken: refreshedToken)
             }
@@ -103,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data ) {
         if let refreshedToken = InstanceID.instanceID().token() {
             print("google token: \(refreshedToken)")
+            GlobalVar.deviceToken = refreshedToken
             if GlobalVar.user_id != "0" {
                 registerDevice(deviceToken: refreshedToken)
             }
@@ -131,7 +133,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
+
+@available(iOS 10.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound, .alert])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let content = response.notification.request.content
+        print("title \(content.title)")
+        print("userInfo \(content.userInfo)")
+        print("actionIdentifier \(response.actionIdentifier)")
+        
+        completionHandler()
+    }
+}
+
 

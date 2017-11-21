@@ -60,6 +60,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        arrayMenuOptions.append(["title":"會員資料", "icon":"spot"])
 //        arrayMenuOptions.append(["title":"服務紀錄", "icon":"spot"])
         arrayMenuOptions.append(["title":"新增車輛", "icon":"spot"])
+        arrayMenuOptions.append(["title":"服務紀錄", "icon":"spot"])
         arrayMenuOptions.append(["title":"切換品牌", "icon":"spot"])
         
         let defaults = UserDefaults.standard

@@ -42,6 +42,7 @@ class MainViewController: BaseViewController {
             contact.setImage(UIImage(named: "main_contact_vw"), for: UIControlState.normal)
             footer.image = UIImage(named: "footer_vw")
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

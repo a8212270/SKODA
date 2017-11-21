@@ -42,8 +42,10 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         case 1:
             self.openViewControllerBasedOnIdentifier("addAndBindingView")
         case 2:
-            self.openViewControllerBasedOnIdentifier("chooseView")
+            self.openViewControllerBasedOnIdentifier("serviceRecordView")
         case 3:
+            self.openViewControllerBasedOnIdentifier("chooseView")
+        case 4:
             let defaults = UserDefaults.standard
             let hasSetId = defaults.value(forKey: "id") as? String
             if hasSetId != nil {

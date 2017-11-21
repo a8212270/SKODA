@@ -32,8 +32,8 @@ class OrderDetailViewController: BaseViewController {
     
     let datePickerView:UIDatePicker = UIDatePicker()
     let placeholder = ["請選擇保養項目", "備註", "請選擇險種", "請選擇保養日期", "請選擇保養時間", "請選擇車廠"]
-    let order_types = ["請選擇險種", "甲式保險", "乙式保險", "丙式保險", "第三意外險", "竊盜險"]
-    let insurance_types = ["請選擇保養項目", "小型保養", "中型保養", "大型保養", "特殊維修"]
+    let insurance_types = ["請選擇險種", "甲式保險", "乙式保險", "丙式保險", "第三意外險", "竊盜險"]
+    let order_types = ["請選擇保養項目", "小型保養", "中型保養", "大型保養", "特殊維修"]
     let sk_maintenances = ["請選擇車廠", "SKODA 中和新車銷售據點", "SKODA 新莊新車銷售據點", "SKODA 中和服務廠"]
     let vw_maintenances = ["請選擇車廠", "VW LCV 土城服務廠"]
     let maintenances_phone = ["02-82213399", "02-89932272", "02-82213115", "02-22696290"]
@@ -66,6 +66,7 @@ class OrderDetailViewController: BaseViewController {
         setBackgroundColor()
         clearBackTitle()
 //        hideKeyboardWhenTappedAround()
+        self.navigationItem.title = "預約保養"
         
         carImg.af_setImage(withURL: URL(string: carImgUrl)!)
         carImg.contentMode = .scaleAspectFit
@@ -213,12 +214,12 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
             cell.input.inputView = pickerView
             cell.input.inputAccessoryView = toolBar
             
-            if indexPath.row == 0 && (insurance_type != "" || insurance_type != "請選擇保養項目"){
-                cell.input.text = insurance_type
+            if indexPath.row == 0 && (order_type != "" || order_type != "請選擇保養項目") {
+                cell.input.text = order_type
             }
             
-            if indexPath.row == 2 && (order_type != "" || order_type != "請選擇險種") {
-                cell.input.text = order_type
+            if indexPath.row == 2 && (insurance_type != "" || insurance_type != "請選擇險種"){
+                cell.input.text = insurance_type
             }
             
             if indexPath.row == 4 && (time != "" || time != "請選擇保養時間"){
@@ -278,9 +279,9 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
         
         switch pickerView.tag {
         case 0:
-            pickerViewList = insurance_types
-        case 2:
             pickerViewList = order_types
+        case 2:
+            pickerViewList = insurance_types
         case 4:
             pickerViewList = times
         case 5:
@@ -299,9 +300,9 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
         case 0:
-            pickerViewList = insurance_types
-        case 2:
             pickerViewList = order_types
+        case 2:
+            pickerViewList = insurance_types
         case 4:
             pickerViewList = times
         case 5:
@@ -321,16 +322,16 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
 
         switch pickerView.tag {
         case 0:
-            insurance_type = pickerViewList[row]
+            order_type = pickerViewList[row]
             if row == 4 {
                 self.isShowRemark = true
             } else {
                 self.isShowRemark = false
             }
-            s_insurance_type = "\(row)"
-        case 2:
-            order_type = pickerViewList[row]
             s_order_type = "\(row)"
+        case 2:
+            insurance_type = pickerViewList[row]
+            s_insurance_type = "\(row)"
         case 4:
             time = pickerViewList[row]
             s_time = "\(row)"
