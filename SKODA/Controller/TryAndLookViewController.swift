@@ -138,6 +138,8 @@ class TryAndLookViewController: BaseViewController {
             parameters.updateValue(d_tel, forKey: "tel")
             parameters.updateValue(d_gender, forKey: "gender")
 
+        } else {
+            parameters.updateValue(GlobalVar.user_id, forKey: "user_id")
         }
         
         print(parameters)

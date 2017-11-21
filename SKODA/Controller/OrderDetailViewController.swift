@@ -133,7 +133,7 @@ class OrderDetailViewController: BaseViewController {
         if remark != "" {
             parameters.updateValue(s_remark, forKey: "remarks")
         }
-//        print(parameters)
+        print(parameters)
         
         Public.getRemoteData("\(GlobalVar.serverIp)api/v1/order/Add", parameters: parameters as [String : AnyObject]) { (response, error) in
             

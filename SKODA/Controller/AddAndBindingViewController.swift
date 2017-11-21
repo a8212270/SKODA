@@ -156,7 +156,7 @@ class AddAndBindingViewController: BaseViewController {
             "user_id": GlobalVar.user_id,
             "plate_number": plate_number,
             "date": date,
-            "car_owner": car_owner]
+            "owner": car_owner]
         
         if defaultApi == "api/v1/car/Add/Record" {
             

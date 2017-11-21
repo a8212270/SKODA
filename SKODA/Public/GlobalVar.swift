@@ -15,5 +15,5 @@ struct GlobalVar {
     static let serverIp = GlobalVar.devMode ? "http://35.194.185.173/skoda/public/" : "http://35.194.168.201/barsurfing/public/"
     
     static var mode = "skoda"
-    static var user_id = "235"
+    static var user_id = "0"
 }
