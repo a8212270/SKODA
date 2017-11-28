@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class OrderDetailViewControllerCell: UITableViewCell {
     @IBOutlet weak var input: UITextField!
@@ -26,8 +27,10 @@ class OrderDetailViewController: BaseViewController {
     var carImgUrl = ""
     var car_model = ""
     var plate_number = ""
+    var brand = ""
     var toolBar:UIToolbar!
     var pickerViewList = [String]()
+    var maintenanceList:JSON! = []
     var isShowRemark = false
     
     let datePickerView:UIDatePicker = UIDatePicker()
@@ -36,6 +39,7 @@ class OrderDetailViewController: BaseViewController {
     let order_types = ["請選擇保養項目", "小型保養", "中型保養", "大型保養", "特殊維修"]
     let sk_maintenances = ["請選擇車廠", "SKODA 中和新車銷售據點", "SKODA 新莊新車銷售據點", "SKODA 中和服務廠"]
     let vw_maintenances = ["請選擇車廠", "VW LCV 土城服務廠"]
+    var maintenances = ["請選擇車廠"]
     let maintenances_phone = ["02-82213399", "02-89932272", "02-82213115", "02-22696290"]
     let maintenances_address = ["新北市中和區建康路28號", "新北市新莊區中正路66號", "新北市中和區建康路28號", "新北市土城區中華路二段212號"]
     let times = ["請選擇保養時間", "8:30", "9:30", "10:30", "11:30", "13:30", "14:30", "15:30"]
@@ -61,6 +65,7 @@ class OrderDetailViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        getMaintenanceList()
         setFooter()
         addSlideMenuButton()
         setBackgroundColor()
@@ -99,6 +104,27 @@ class OrderDetailViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func getMaintenanceList() {
+        
+        let parameters = ["brand": self.brand,
+                          "type": "1"]
+        print(brand)
+        
+        Public.getRemoteData("\(GlobalVar.serverIp)api/v1/maintenance/List", parameters: parameters as [String : AnyObject]) { (response, error) in
+            print(response)
+            if error {
+                
+            } else {
+                self.maintenanceList = response["result"]
+                
+                for i in 0..<self.maintenanceList.count {
+                    self.maintenances.append(self.maintenanceList[i]["name"].stringValue)
+                }
+            }
+        }
+    }
+    
     
     @objc func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
@@ -285,11 +311,12 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
         case 4:
             pickerViewList = times
         case 5:
-            if GlobalVar.mode == "skoda" {
-                pickerViewList = sk_maintenances
-            } else {
-                pickerViewList = vw_maintenances
-            }
+//            if GlobalVar.mode == "skoda" {
+//                pickerViewList = sk_maintenances
+//            } else {
+//                pickerViewList = vw_maintenances
+//            }
+            pickerViewList = maintenances
         default:
             pickerViewList = []
         }
@@ -306,11 +333,12 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
         case 4:
             pickerViewList = times
         case 5:
-            if GlobalVar.mode == "skoda" {
-                pickerViewList = sk_maintenances
-            } else {
-                pickerViewList = vw_maintenances
-            }
+//            if GlobalVar.mode == "skoda" {
+//                pickerViewList = sk_maintenances
+//            } else {
+//                pickerViewList = vw_maintenances
+//            }
+            pickerViewList = maintenances
         default:
             pickerViewList = []
         }
@@ -337,11 +365,12 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
             s_time = "\(row)"
         case 5:
             maintenance = pickerViewList[row]
-            if GlobalVar.mode == "skoda" {
-                s_maintenance = "\(row)"
-            } else {
-                s_maintenance = "4"
-            }
+//            if GlobalVar.mode == "skoda" {
+//                s_maintenance = "\(row)"
+//            } else {
+//                s_maintenance = "4"
+//            }
+            s_maintenance = self.maintenanceList[row - 1]["id"].stringValue
         default:
             break
         }

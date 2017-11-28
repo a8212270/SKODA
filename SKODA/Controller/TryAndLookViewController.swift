@@ -23,7 +23,9 @@ class TryAndLookViewController: BaseViewController {
     var pickerViewList = [String]()
     var toolBar:UIToolbar!
     var carList:JSON = []
+    var maintenanceList:JSON! = []
     var allCar = ["請選擇車款"]
+    var maintenances = ["請選擇車廠"]
     
     let placeholders = ["目前車款", "車齡", "性別", "姓名", "電話", "請選擇試駕車款", "請選擇展示地點", "方便聯繫時間"]
     let sk_maintenances = ["請選擇展示地點", "SKODA 中和新車銷售據點", "SKODA 新莊新車銷售據點"]
@@ -55,6 +57,7 @@ class TryAndLookViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        getMaintenanceList()
         addSlideMenuButton()
         setFooter()
         setBackgroundColor()
@@ -95,6 +98,28 @@ class TryAndLookViewController: BaseViewController {
         
         self.view.endEditing(true)
         
+    }
+    
+    func getMaintenanceList() {
+        
+        let brand = GlobalVar.mode == "skoda" ? "2" : "1"
+        
+        let parameters = ["brand": brand,
+                          "type": "0"]
+        print(brand)
+        
+        Public.getRemoteData("\(GlobalVar.serverIp)api/v1/maintenance/List", parameters: parameters as [String : AnyObject]) { (response, error) in
+            print(response)
+            if error {
+                
+            } else {
+                self.maintenanceList = response["result"]
+                
+                for i in 0..<self.maintenanceList.count {
+                    self.maintenances.append(self.maintenanceList[i]["name"].stringValue)
+                }
+            }
+        }
     }
     
     func getTestCarList() {
@@ -251,11 +276,12 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
         case 5:
             pickerViewList = allCar
         case 6:
-            if GlobalVar.mode == "skoda" {
-                pickerViewList = sk_maintenances
-            } else {
-                pickerViewList = vw_maintenances
-            }
+//            if GlobalVar.mode == "skoda" {
+//                pickerViewList = sk_maintenances
+//            } else {
+//                pickerViewList = vw_maintenances
+//            }
+            pickerViewList = maintenances
         case 7:
             pickerViewList = times
         default:
@@ -273,11 +299,12 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
         case 5:
             pickerViewList = allCar
         case 6:
-            if GlobalVar.mode == "skoda" {
-                pickerViewList = sk_maintenances
-            } else {
-                pickerViewList = vw_maintenances
-            }
+//            if GlobalVar.mode == "skoda" {
+//                pickerViewList = sk_maintenances
+//            } else {
+//                pickerViewList = vw_maintenances
+//            }
+            pickerViewList = maintenances
         case 7:
             pickerViewList = times
         default:
@@ -297,11 +324,12 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
             d_model_id = carList[row - 1]["id"].stringValue
         case 6:
             maintenance = pickerViewList[row]
-            if GlobalVar.mode == "skoda" {
-                d_maintenance_plant_no = d_sk_maintenances[row]
-            } else {
-                d_maintenance_plant_no = d_vw_maintenances[row]
-            }
+//            if GlobalVar.mode == "skoda" {
+//                d_maintenance_plant_no = d_sk_maintenances[row]
+//            } else {
+//                d_maintenance_plant_no = d_vw_maintenances[row]
+//            }
+            d_maintenance_plant_no = self.maintenanceList[row - 1]["id"].stringValue
         case 7:
             time = pickerViewList[row]
             d_time = d_times[row]

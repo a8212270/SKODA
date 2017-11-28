@@ -12,6 +12,7 @@ import AlamofireImage
 
 class OrderViewControllerCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var label: UILabel!
 }
 
 class OrderViewController: BaseViewController {
@@ -90,6 +91,7 @@ extension OrderViewController: UICollectionViewDelegate, UICollectionViewDataSou
         } else {
             cell.image.af_setImage(withURL: URL(string: self.data[indexPath.row - 1]["img"].stringValue)!)
             cell.image.contentMode = .scaleAspectFit
+            cell.label.text = "\(self.data[indexPath.row - 1]["plate_number"].stringValue) \n \(self.data[indexPath.row - 1]["model"].stringValue)"
         }
         
         return cell
@@ -105,6 +107,7 @@ extension OrderViewController: UICollectionViewDelegate, UICollectionViewDataSou
             popOverVC.car_model = self.data[indexPath.row - 1]["model"].stringValue
             popOverVC.plate_number = self.data[indexPath.row - 1]["plate_number"].stringValue
             popOverVC.s_car_no = self.data[indexPath.row - 1]["id"].stringValue
+            popOverVC.brand = self.data[indexPath.row - 1]["brand"].stringValue
             
             self.navigationController?.pushViewController(popOverVC, animated: true)
         }
