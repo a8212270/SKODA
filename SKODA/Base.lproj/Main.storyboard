@@ -41,10 +41,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SK_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="pmM-Gm-zt3">
-                                <rect key="frame" x="19" y="172" width="150" height="167"/>
+                                <rect key="frame" x="19" y="172" width="150" height="146.5"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VM_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="qXs-d7-QlH">
-                                <rect key="frame" x="206" y="172" width="150" height="167"/>
+                                <rect key="frame" x="206" y="172" width="150" height="146.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇您的車款品牌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWa-Lg-JBe">
                                 <rect key="frame" x="19" y="567" width="337" height="80"/>
@@ -63,7 +63,7 @@
                             <constraint firstItem="JiB-KA-VLH" firstAttribute="leading" secondItem="muK-hZ-0Ib" secondAttribute="leading" id="Bpq-fD-Qde"/>
                             <constraint firstItem="qXs-d7-QlH" firstAttribute="width" secondItem="pmM-Gm-zt3" secondAttribute="width" id="FnX-4r-tpq"/>
                             <constraint firstItem="AWa-Lg-JBe" firstAttribute="leading" secondItem="muK-hZ-0Ib" secondAttribute="leading" constant="19" id="Jsy-aA-yQR"/>
-                            <constraint firstItem="pmM-Gm-zt3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="MUI-0X-HE3"/>
+                            <constraint firstItem="pmM-Gm-zt3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.22" id="MUI-0X-HE3"/>
                             <constraint firstItem="qXs-d7-QlH" firstAttribute="centerX" secondItem="d0p-Vt-frg" secondAttribute="centerX" id="ObJ-z2-3FE"/>
                             <constraint firstItem="qXs-d7-QlH" firstAttribute="height" secondItem="pmM-Gm-zt3" secondAttribute="height" id="Osy-3O-K9c"/>
                             <constraint firstItem="d0p-Vt-frg" firstAttribute="height" secondItem="JiB-KA-VLH" secondAttribute="height" id="Pv9-Ky-q5i"/>
@@ -1346,8 +1346,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SK_Icon" width="188" height="216"/>
-        <image name="VM_Icon" width="188" height="216"/>
+        <image name="SK_Icon" width="320" height="320"/>
+        <image name="VM_Icon" width="320" height="320"/>
         <image name="footer" width="2251" height="116"/>
         <image name="login" width="2250" height="3966"/>
         <image name="login_fb" width="464" height="74"/>
@@ -1364,6 +1364,6 @@
         <image name="wisdonRoomBG" width="540" height="881"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QNw-BI-95F"/>
+        <segue reference="aU8-9J-nEq"/>
     </inferredMetricsTieBreakers>
 </document>

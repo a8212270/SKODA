@@ -11,8 +11,8 @@ import SwiftyJSON
 
 struct GlobalVar {
     
-    static let devMode = true
-    static let serverIp = GlobalVar.devMode ? "http://35.201.174.91/skoda/public/" : "http://35.194.168.201/barsurfing/public/"
+    static let devMode = false
+    static let serverIp = GlobalVar.devMode ? "http://35.194.185.173/skoda/public/" : "http://35.201.174.91/skoda/public/"
     
     static var mode = "skoda"
     static var user_id = "0"

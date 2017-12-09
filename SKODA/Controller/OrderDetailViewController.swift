@@ -31,15 +31,18 @@ class OrderDetailViewController: BaseViewController {
     var toolBar:UIToolbar!
     var pickerViewList = [String]()
     var maintenanceList:JSON! = []
+    var mealList:JSON! = []
     var isShowRemark = false
+    var isShowMeals = false
     
     let datePickerView:UIDatePicker = UIDatePicker()
-    let placeholder = ["請選擇保養項目", "備註", "請選擇險種", "請選擇保養日期", "請選擇保養時間", "請選擇車廠"]
+    let placeholder = ["請選擇保養項目", "備註", "請選擇險種", "請選擇保養日期", "請選擇保養時間", "請選擇餐點", "請選擇車廠"]
     let insurance_types = ["請選擇險種", "甲式保險", "乙式保險", "丙式保險", "第三意外險", "竊盜險"]
     let order_types = ["請選擇保養項目", "小型保養", "中型保養", "大型保養", "特殊維修"]
     let sk_maintenances = ["請選擇車廠", "SKODA 中和新車銷售據點", "SKODA 新莊新車銷售據點", "SKODA 中和服務廠"]
     let vw_maintenances = ["請選擇車廠", "VW LCV 土城服務廠"]
     var maintenances = ["請選擇車廠"]
+    var meals = ["請選擇餐點", "不需要"]
     let maintenances_phone = ["02-82213399", "02-89932272", "02-82213115", "02-22696290"]
     let maintenances_address = ["新北市中和區建康路28號", "新北市新莊區中正路66號", "新北市中和區建康路28號", "新北市土城區中華路二段212號"]
     let times = ["請選擇保養時間", "8:30", "9:30", "10:30", "11:30", "13:30", "14:30", "15:30"]
@@ -51,6 +54,7 @@ class OrderDetailViewController: BaseViewController {
     var remark = ""
     var maintenance = ""
     var time = ""
+    var meal = ""
     
     //回傳資料
     var s_date = ""
@@ -60,12 +64,14 @@ class OrderDetailViewController: BaseViewController {
     var s_maintenance = ""
     var s_time = ""
     var s_car_no = ""
+    var s_meal = "0"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         getMaintenanceList()
+        getMealsList()
         setFooter()
         addSlideMenuButton()
         setBackgroundColor()
@@ -109,7 +115,6 @@ class OrderDetailViewController: BaseViewController {
         
         let parameters = ["brand": self.brand,
                           "type": "1"]
-        print(brand)
         
         Public.getRemoteData("\(GlobalVar.serverIp)api/v1/maintenance/List", parameters: parameters as [String : AnyObject]) { (response, error) in
             print(response)
@@ -120,6 +125,24 @@ class OrderDetailViewController: BaseViewController {
                 
                 for i in 0..<self.maintenanceList.count {
                     self.maintenances.append(self.maintenanceList[i]["name"].stringValue)
+                }
+            }
+        }
+    }
+    
+    func getMealsList() {
+        
+        let parameters = ["brand": self.brand]
+        
+        Public.getRemoteData("\(GlobalVar.serverIp)api/v1/order/Get_Meals_List", parameters: parameters as [String : AnyObject]) { (response, error) in
+            print(response)
+            if error {
+                
+            } else {
+                self.mealList = response["result"]
+                
+                for i in 0..<self.mealList.count {
+                    self.meals.append(self.mealList[i]["name"].stringValue)
                 }
             }
         }
@@ -155,7 +178,8 @@ class OrderDetailViewController: BaseViewController {
             "car_no": s_car_no,
             "maintenance_plant_no": s_maintenance,
             "insurance_type": s_insurance_type,
-            "order_type": s_order_type]
+            "order_type": s_order_type,
+            "meals": s_meal]
         
         if remark != "" {
             parameters.updateValue(s_remark, forKey: "remarks")
@@ -207,7 +231,7 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 6 {
+        if indexPath.row == 7 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! OrderDetailViewControllerCell
             
             cell.submit.addTarget(self, action: #selector(self.sendData), for: .touchUpInside)
@@ -229,7 +253,7 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.backgroundColor = UIColor.clear
             return cell
-        } else if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 5 {
+        } else if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! OrderDetailViewControllerCell
             cell.input.placeholder = placeholder[indexPath.row]
             cell.tag = indexPath.row
@@ -252,7 +276,11 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.input.text = time
             }
             
-            if indexPath.row == 5 && (maintenance != "" || maintenance != "請選擇車廠") {
+            if indexPath.row == 5 && (meal != "" || meal != "請選擇餐點"){
+                cell.input.text = meal
+            }
+            
+            if indexPath.row == 6 && (maintenance != "" || maintenance != "請選擇車廠") {
                 cell.input.text = maintenance
             }
             
@@ -284,11 +312,15 @@ extension OrderDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 6 {
+        if indexPath.row == 7 {
             return 70.0
         } else if indexPath.row == 1 && self.isShowRemark {
             return 140.0
         } else if indexPath.row == 1 && !self.isShowRemark {
+            return 0
+        } else if indexPath.row == 5 && self.isShowMeals {
+            return 44.0
+        } else if indexPath.row == 5 && !self.isShowMeals {
             return 0
         } else {
             return 44.0
@@ -311,11 +343,8 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
         case 4:
             pickerViewList = times
         case 5:
-//            if GlobalVar.mode == "skoda" {
-//                pickerViewList = sk_maintenances
-//            } else {
-//                pickerViewList = vw_maintenances
-//            }
+            pickerViewList = meals
+        case 6:
             pickerViewList = maintenances
         default:
             pickerViewList = []
@@ -333,11 +362,8 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
         case 4:
             pickerViewList = times
         case 5:
-//            if GlobalVar.mode == "skoda" {
-//                pickerViewList = sk_maintenances
-//            } else {
-//                pickerViewList = vw_maintenances
-//            }
+            pickerViewList = meals
+        case 6:
             pickerViewList = maintenances
         default:
             pickerViewList = []
@@ -362,14 +388,17 @@ extension OrderDetailViewController: UIPickerViewDataSource, UIPickerViewDelegat
             s_insurance_type = "\(row)"
         case 4:
             time = pickerViewList[row]
+            if row <= 4 && row > 0 {
+                self.isShowMeals = true
+            } else {
+                self.isShowMeals = false
+            }
             s_time = "\(row)"
         case 5:
+            meal = pickerViewList[row]
+            s_meal = "\(row - 1)"
+        case 6:
             maintenance = pickerViewList[row]
-//            if GlobalVar.mode == "skoda" {
-//                s_maintenance = "\(row)"
-//            } else {
-//                s_maintenance = "4"
-//            }
             s_maintenance = self.maintenanceList[row - 1]["id"].stringValue
         default:
             break

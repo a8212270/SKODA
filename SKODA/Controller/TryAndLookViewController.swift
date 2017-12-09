@@ -32,7 +32,7 @@ class TryAndLookViewController: BaseViewController {
     let d_sk_maintenances = ["", "1", "2"]
     let vw_maintenances = ["請選擇展示地點", "VW LCV 土城服務廠"]
     let d_vw_maintenances = ["", "4"]
-    let times = ["請選擇聯繫時間", "8:30", "9:30", "10:30", "11:30", "13:30", "14:30", "15:30"]
+    let times = ["請選擇聯繫時間", "06:00-09:00", "09:00-12:00", "13:00-15:00", "15:00-18:00", "18:00-20:00"]
     let d_times = ["", "1", "2", "3", "4", "5", "6", "7"]
     let genders = ["請選擇性別", "男", "女"]
     let d_genders = ["0", "1", "2"]
@@ -276,11 +276,6 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
         case 5:
             pickerViewList = allCar
         case 6:
-//            if GlobalVar.mode == "skoda" {
-//                pickerViewList = sk_maintenances
-//            } else {
-//                pickerViewList = vw_maintenances
-//            }
             pickerViewList = maintenances
         case 7:
             pickerViewList = times
@@ -299,11 +294,6 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
         case 5:
             pickerViewList = allCar
         case 6:
-//            if GlobalVar.mode == "skoda" {
-//                pickerViewList = sk_maintenances
-//            } else {
-//                pickerViewList = vw_maintenances
-//            }
             pickerViewList = maintenances
         case 7:
             pickerViewList = times
@@ -324,11 +314,6 @@ extension TryAndLookViewController: UIPickerViewDataSource, UIPickerViewDelegate
             d_model_id = carList[row - 1]["id"].stringValue
         case 6:
             maintenance = pickerViewList[row]
-//            if GlobalVar.mode == "skoda" {
-//                d_maintenance_plant_no = d_sk_maintenances[row]
-//            } else {
-//                d_maintenance_plant_no = d_vw_maintenances[row]
-//            }
             d_maintenance_plant_no = self.maintenanceList[row - 1]["id"].stringValue
         case 7:
             time = pickerViewList[row]
