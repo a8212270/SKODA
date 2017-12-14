@@ -31,7 +31,7 @@ extension UIViewController {
         if GlobalVar.mode == "skoda" {
             footer.image = UIImage(named: "footer")
         } else {
-            footer.image = UIImage(named: "footer_vm")
+            footer.image = UIImage(named: "footer_vw")
         }
         
         view.addSubview(footer)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import CoreLocation
 import CoreBluetooth
 
@@ -16,6 +17,8 @@ class WisdomRoomViewController: BaseViewController {
     var locationManager: CLLocationManager!
     var beacons = [CLBeacon]()
     var beaconRegion:CLBeaconRegion!
+    var alrController = UIAlertController()
+    var beaconData:JSON! = []
     
     var count = 0
     var beacon_id = 0
@@ -50,7 +53,13 @@ class WisdomRoomViewController: BaseViewController {
         super.viewWillAppear(true)
         btCenteralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManager!.stopMonitoring(for: beaconRegion)
+        locationManager!.stopRangingBeacons(in: beaconRegion)
+        locationManager!.stopUpdatingLocation()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -83,23 +92,43 @@ class WisdomRoomViewController: BaseViewController {
             if error {
                 Public.displayAlert(self, title: "提醒！", message: response["Msg"].stringValue)
             } else {
-                let alert = UIAlertController(title: "Welcome!", message: "在您身旁的是\n \(response["result"]["model_name"].stringValue) \n 需要為您介紹嗎？", preferredStyle: UIAlertControllerStyle.alert)
+                self.beaconData = response["result"]
+                self.alrController = UIAlertController(title: "請選擇查看車款 \n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
                 
-                alert.addAction((UIAlertAction(title: "確認", style: .default, handler: {(action) -> Void in
-                    let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wisdomRoomShow") as! WisdomRoomShowViewController
-                    
-                    popOverVC.titlePicUrl = response["result"]["titlePic"].stringValue
-                    
-                    popOverVC.picUrls = response["result"]["pics"].arrayValue
-                    
-                    self.navigationController?.pushViewController(popOverVC, animated: true)
-
-                })))
+                let margin:CGFloat = 8.0
+                let rect = CGRect(x: margin, y: margin * 6, width: self.alrController.view.frame.width * 0.68, height: 150.0)
+                let tableView = UITableView(frame: rect)
+                tableView.delegate = self
+                tableView.dataSource = self
+                tableView.backgroundColor = UIColor.clear
+                tableView.tableFooterView = UIView(frame: CGRect.zero)
+                tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+                self.alrController.view.addSubview(tableView)
                 
-                alert.addAction(UIAlertAction(title: "不用了，謝謝", style: .cancel, handler: {(action) -> Void in
+                let cancelAction = UIAlertAction(title: "不用了，謝謝", style: .cancel, handler: {(action) -> Void in
                     self.navigationController?.popToRootViewController(animated: true)
-                }))
-                self.present(alert, animated: true, completion: nil)
+                })
+
+                self.alrController.addAction(cancelAction)
+                
+                self.present(self.alrController, animated: true, completion:{})
+//                let alert = UIAlertController(title: "Welcome!", message: "在您身旁的是\n \(response["result"]["model_name"].stringValue) \n 需要為您介紹嗎？", preferredStyle: UIAlertControllerStyle.alert)
+//
+//                alert.addAction((UIAlertAction(title: "確認", style: .default, handler: {(action) -> Void in
+//                    let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wisdomRoomShow") as! WisdomRoomShowViewController
+//
+//                    popOverVC.titlePicUrl = response["result"]["titlePic"].stringValue
+//
+//                    popOverVC.picUrls = response["result"]["pics"].arrayValue
+//
+//                    self.navigationController?.pushViewController(popOverVC, animated: true)
+//
+//                })))
+//
+//                alert.addAction(UIAlertAction(title: "不用了，謝謝", style: .cancel, handler: {(action) -> Void in
+//                    self.navigationController?.popToRootViewController(animated: true)
+//                }))
+//                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -139,6 +168,33 @@ extension WisdomRoomViewController: CLLocationManagerDelegate {
         }
     }
     
+}
+
+extension WisdomRoomViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.beaconData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as
+        UITableViewCell
+        
+        cell.textLabel?.text = self.beaconData[indexPath.row]["model_name"].stringValue
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        alrController.dismiss(animated: true, completion: nil)
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wisdomRoomShow") as! WisdomRoomShowViewController
+        
+        popOverVC.titlePicUrl = self.beaconData[indexPath.row]["titlePic"].stringValue
+        
+        popOverVC.picUrls = self.beaconData[indexPath.row]["pics"].arrayValue
+        
+        self.navigationController?.pushViewController(popOverVC, animated: true)
+
+    }
 }
 
 extension WisdomRoomViewController: CBCentralManagerDelegate {
