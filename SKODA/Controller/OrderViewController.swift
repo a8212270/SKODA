@@ -18,8 +18,13 @@ class OrderViewControllerCell: UICollectionViewCell {
 class OrderViewController: BaseViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBarTopConstrait: NSLayoutConstraint!
     
-    var data:JSON! = []
+    var data = [JSON]()
+    var searchData = [JSON]()
+    
+    var isSearch = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +37,12 @@ class OrderViewController: BaseViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        searchBar.delegate = self
         
+        searchBar.placeholder = "搜尋車牌..."
+        
+        searchBarTopConstrait.constant = 0
+        addCollectionViewObserver()
         
     }
     
@@ -55,12 +65,26 @@ class OrderViewController: BaseViewController {
             if error {
                 print("error")
             } else {
-                self.data = response["result"]
+                self.data = response["result"].arrayValue
+                print(self.data)
                 self.collectionView.reloadData()
             }
         }
     }
     
+    func addCollectionViewObserver() {
+        collectionView.addObserver(self, forKeyPath: "contentOffset", options: [.new, .old], context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let keypath = keyPath, keypath == "contentOffset", let collectionView = object as? UICollectionView {
+            searchBarTopConstrait.constant = -1 * collectionView.contentOffset.y
+        }
+    }
+    
+    deinit {
+        collectionView.removeObserver(self, forKeyPath: "contentOffset")
+    }
 
     
     // MARK: - Navigation
@@ -80,19 +104,35 @@ class OrderViewController: BaseViewController {
 
 extension OrderViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1 + self.data.count
+        if isSearch {
+            return self.searchData.count
+        } else {
+            return 1 + self.data.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OrderViewControllerCell
         
-        if indexPath.row == 0 {
-            cell.image.image = UIImage(named: "add")
+        if !isSearch {
+            if indexPath.row == 0 {
+                print("is 0")
+                cell.image.image = UIImage(named: "add")
+                cell.label.text = ""
+            } else {
+                cell.image.image = nil
+                cell.image.af_setImage(withURL: URL(string: self.data[indexPath.row - 1]["img"].stringValue)!)
+                cell.image.contentMode = .scaleAspectFit
+                cell.label.text = "\(self.data[indexPath.row - 1]["plate_number"].stringValue) \n \(self.data[indexPath.row - 1]["model"].stringValue)"
+            }
         } else {
-            cell.image.af_setImage(withURL: URL(string: self.data[indexPath.row - 1]["img"].stringValue)!)
+            cell.image.image = nil
+            cell.image.af_setImage(withURL: URL(string: self.searchData[indexPath.row]["img"].stringValue)!)
             cell.image.contentMode = .scaleAspectFit
-            cell.label.text = "\(self.data[indexPath.row - 1]["plate_number"].stringValue) \n \(self.data[indexPath.row - 1]["model"].stringValue)"
+            cell.label.text = "\(self.searchData[indexPath.row]["plate_number"].stringValue) \n \(self.searchData[indexPath.row]["model"].stringValue)"
         }
+        
         
         return cell
     }
@@ -113,10 +153,56 @@ extension OrderViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: (self.searchBar.frame.height) + 10.0, left: 15.0, bottom: 10.0, right: 15.0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let width = (ScreenSize.SCREEN_WIDTH / 2) - 20
         let height = width
         return CGSize(width: width, height: height);
+    }
+}
+
+extension OrderViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            isSearch = false
+        } else {
+            isSearch = true
+            searchData.removeAll()
+            for a in data {
+                let name = a["plate_number"].stringValue
+                let model = a["model"].stringValue
+                
+                if name.lowercased().contains(searchText.lowercased()) || model.lowercased().contains(searchText.lowercased()) {
+                    searchData.append(a)
+                }
+            }
+        }
+        
+        self.collectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+        
+        self.collectionView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
     }
 }

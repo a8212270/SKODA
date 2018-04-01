@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-Light</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -931,18 +926,27 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="tjd-j3-Xwe">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ScJ-Xd-fhQ" firstAttribute="trailing" secondItem="U1u-zk-YLV" secondAttribute="trailing" id="7gT-X5-K4A"/>
                             <constraint firstItem="ScJ-Xd-fhQ" firstAttribute="bottom" secondItem="U1u-zk-YLV" secondAttribute="bottom" id="VAt-8s-MYc"/>
+                            <constraint firstItem="tjd-j3-Xwe" firstAttribute="top" secondItem="U1u-zk-YLV" secondAttribute="top" id="Y9l-pb-nAJ"/>
+                            <constraint firstItem="tjd-j3-Xwe" firstAttribute="trailing" secondItem="U1u-zk-YLV" secondAttribute="trailing" id="c2G-H4-3U4"/>
                             <constraint firstItem="ScJ-Xd-fhQ" firstAttribute="leading" secondItem="U1u-zk-YLV" secondAttribute="leading" id="eXf-zE-z22"/>
-                            <constraint firstItem="ScJ-Xd-fhQ" firstAttribute="top" secondItem="U1u-zk-YLV" secondAttribute="top" id="qrZ-sn-cmg"/>
+                            <constraint firstItem="ScJ-Xd-fhQ" firstAttribute="top" secondItem="U1u-zk-YLV" secondAttribute="top" id="efm-Gl-OgH"/>
+                            <constraint firstItem="tjd-j3-Xwe" firstAttribute="leading" secondItem="U1u-zk-YLV" secondAttribute="leading" id="wLI-lW-NNU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U1u-zk-YLV"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="ScJ-Xd-fhQ" id="Nih-K7-Lnd"/>
+                        <outlet property="searchBar" destination="tjd-j3-Xwe" id="6He-Ko-yeQ"/>
+                        <outlet property="searchBarTopConstrait" destination="Y9l-pb-nAJ" id="943-Av-fVp"/>
                         <segue destination="Xrd-4e-dcx" kind="show" identifier="AddAndBinding" id="prf-Ej-Iid"/>
                         <segue destination="7B7-4t-cjM" kind="show" id="WDo-8F-QDs"/>
                     </connections>
@@ -1360,7 +1364,7 @@
         <image name="main_try" width="2250" height="716"/>
         <image name="selectSection" width="540" height="960"/>
         <image name="sk_service_0" width="540" height="95"/>
-        <image name="testDrive" width="540" height="271"/>
+        <image name="testDrive" width="540" height="270"/>
         <image name="wisdonRoomBG" width="540" height="881"/>
     </resources>
     <inferredMetricsTieBreakers>
