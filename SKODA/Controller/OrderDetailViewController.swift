@@ -106,8 +106,18 @@ class OrderDetailViewController: BaseViewController {
         toolBar.setItems([flexSpace, flexSpace, flexSpace, flexSpace, doneButton], animated: true)
         
         //設定datePickerView模式及偵聽
+        let date = Date()// Aug 25, 2017, 11:55 AM
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        var components = DateComponents()
+        if hour >= 14 {
+            components.day = +2
+        } else {
+            components.day = +1
+        }
+        let minDate = calendar.date(byAdding: components, to: date)
         datePickerView.tag = 99
-        datePickerView.minimumDate = NSDate() as Date
+        datePickerView.minimumDate = minDate
         datePickerView.datePickerMode = .date
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
     }
